@@ -1,0 +1,59 @@
+﻿<!---->
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<title>Add</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="../css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Vollkorn+SC:600&display=swap&subset=cyrillic" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<h1>Поиск</h1>
+		<hr />
+	</header>
+
+	<article>
+		<div class="section">
+			<div class="central">
+				<form method="post" action="" id="forma" name="">
+					<span class="data_name">Введите, что вы хотите найти:</span>
+					<input class="data" id="name" onkeyup="checkParams()" type="text" placeholder="название" autocomplete="off" /><br>
+
+					<input class=".simple_btn" type="button" id="submit" value="Найти" disabled>
+				</form>
+			</div>
+		</div>
+	</article>
+
+	<footer>
+		<div class="copy">&copy;finder</div>
+	</footer>
+
+	<script>
+		function checkParams() {
+			let name = $("#name").val();
+
+			if (name.length > 2){
+				$('#submit').removeAttr('disabled');
+				$('#submit').addClass('okay');
+			} else {
+				$('#submit').attr('disabled', 'disabled');
+			}
+		}
+	</script>
+	<script>
+		"use strict";
+		$(document).ready(function () {
+			$("#submit").click(function () {
+				let name = $("#name").val();
+				location.href="/pictures" + "?name=" + name;
+			});
+		});
+	</script>
+
+
+</body>
+</html>
