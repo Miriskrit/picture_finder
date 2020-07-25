@@ -2,25 +2,25 @@ import socket
 from finder import Finder
 
 
-# Main
 def open_html():
     with open('html/index.html', 'r', encoding='utf-8') as f:
         html = f.read()
     return html
+
+
 def open_css():
     with open('css/main.css', 'r', encoding='utf-8') as f:
         css = f.read()
     return css
 
 
-
 def generate_response(request):
-    
-        # url:body
+
     URLS = {
         '/': open_html(),
-        '/css/main.css':open_css(),
+        '/css/main.css': open_css(),
     }
+
     # API_____________________________
     def open_picture_html(links):
         with open('html/pick.html', 'r', encoding='utf-8') as f:
@@ -32,18 +32,16 @@ def generate_response(request):
                 html_end += f.readline()
         html = html_begin
         for i in range(len(links)-1):
-            html += '<img src=" '+links[i] +' " alt="нет картинки">'
-        html+=html_end
-        return(html)
-    
+            html += '<img src=" '+links[i] + ' " alt="нет картинки">'
+        html += html_end
+        return html
+
     def parse_post(request):
         name = request.split('=')[1]
         F = Finder(name)
         html = open_picture_html(F.trade())
-        return(html)
-    
-        
-        
+        return html
+
     # GET____________________________
     def generate_headers(url):
         if not url in URLS:
@@ -89,6 +87,7 @@ def run():
     serversocket.bind(('localhost', 5000))
     serversocket.listen(5)
     print('\t\t\t\t<--Сервер запущен-->')
+    print('\t\t\t\tАдрес: http://localhost:5000/\n')
 
     while True:
         client_socket, addr = serversocket.accept()

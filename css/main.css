@@ -43,7 +43,6 @@ hr {
 	padding: 10px;
 }
 .central {
-	
 	font-size: 18px;
 	text-align: center;
 	margin: 15px;
@@ -62,7 +61,6 @@ img{
 	/* span and input */
 .data_name, .data {
 	display:inline-block;
-	width: 50%;
 }
 .data {
 	width:25%;
